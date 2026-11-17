@@ -3,153 +3,55 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ScrollTales — নদী থেমে থাকে না</title>
-<meta name="description" content="একটা ভাঙা হৃদয়ের গল্প — স্ক্রল করলে সিন বদলায়, পাশে লেখা ওঠে।">
+<title>জীবনগাথা — একটা মানুষের পুরো জীবন</title>
+<meta name="description" content="একটা মানুষের জন্ম থেকে শেষ পর্যন্ত ৬৬ পর্বের গল্পসিরিজ — প্রতিটা পর্ব স্ক্রল-কাহিনি, ছবি আর লেখা একসঙ্গে।">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500;600&family=Noto+Serif+Bengali:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Serif+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{font-family:Inter,"Noto Serif Bengali",serif;background:#0b0e14;color:#f2ede2;overflow-x:hidden}
-#bg{position:fixed;inset:0;z-index:0}
-#bg .layer{position:absolute;inset:-5%;background-size:cover;background-position:center;opacity:0;will-change:opacity,transform}
-#bg .veil{position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 52%,rgba(4,6,11,.62) 100%)}
-#bg .tint{position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,10,18,.35),rgba(8,10,18,.15) 40%,rgba(8,10,18,.5))}
-#bar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,#e8a75c,#f6d08a);z-index:60;box-shadow:0 0 12px rgba(232,167,92,.7)}
-#dots{position:fixed;right:18px;top:50%;transform:translateY(-50%);z-index:60;display:flex;flex-direction:column;gap:10px}
-#dots a{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.25);display:block;transition:all .3s}
-#dots a.act{background:#f6d08a;transform:scale(1.5);box-shadow:0 0 10px rgba(246,208,138,.8)}
-main{position:relative;z-index:2}
-section{min-height:135vh;display:flex;align-items:center;padding:10vh 7vw}
-section .card{max-width:620px;background:rgba(9,12,20,.58);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.09);border-radius:22px;padding:2.4rem 2.6rem;box-shadow:0 24px 60px rgba(0,0,0,.45)}
-@supports not (backdrop-filter:blur(1px)){section .card{background:rgba(9,12,20,.88)}}
-.js .card{opacity:0;transform:translateY(34px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
-.js .card.on{opacity:1;transform:none}
-section.r{justify-content:flex-end}
-.num{font-size:.78rem;letter-spacing:.25em;color:#e8a75c;margin-bottom:1.1rem;font-weight:600}
-.card p{font-family:"Noto Serif Bengali",serif;font-size:clamp(1.1rem,2.2vw,1.4rem);line-height:2}
-.hero{min-height:100vh;flex-direction:column;justify-content:center;text-align:center;gap:1.4rem}
-.hero .kicker{font-size:.8rem;letter-spacing:.5em;text-transform:uppercase;color:#e8a75c;font-weight:600}
-h1{font-family:"Noto Serif Bengali",serif;font-size:clamp(2.2rem,6.5vw,4.2rem);font-weight:600;line-height:1.3;text-shadow:0 4px 40px rgba(0,0,0,.6)}
-.hero .sub{opacity:.85;font-size:clamp(1rem,1.8vw,1.2rem);max-width:40ch;margin:0 auto}
-.end{min-height:80vh;justify-content:center;text-align:center;flex-direction:column;gap:1rem}
-.end .big{font-family:"Noto Serif Bengali",serif;font-size:clamp(1.8rem,4vw,2.6rem)}
-.end .small{opacity:.7;letter-spacing:.1em;font-size:.9rem}
-.end .more{color:#f6d08a;text-decoration:none;border-bottom:1px solid rgba(246,208,138,.4);font-size:.95rem}
-#hint{position:fixed;bottom:26px;left:50%;transform:translateX(-50%);z-index:55;font-size:.72rem;letter-spacing:.35em;text-transform:uppercase;opacity:.75;animation:bob 2.2s ease-in-out infinite;transition:opacity .5s}
-#hint.gone{opacity:0}
-@keyframes bob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,8px)}}
-@media (max-width:640px){section{min-height:115vh;padding:8vh 6vw}.card{padding:1.7rem 1.5rem}#dots{right:10px}}
+.hero{min-height:88vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:1.2rem;padding:8vh 7vw;position:relative;
+background:linear-gradient(180deg,rgba(8,10,18,.35),rgba(11,14,20,.92) 88%),url('jibon/img/scene1.webp') center/cover}
+.hero .kicker{font-size:.8rem;letter-spacing:.5em;color:#e8a75c;font-weight:600}
+h1{font-family:"Noto Serif Bengali",serif;font-size:clamp(2.4rem,7vw,4.6rem);font-weight:700;line-height:1.25;text-shadow:0 4px 40px rgba(0,0,0,.6)}
+.hero .sub{opacity:.85;font-size:clamp(1rem,1.9vw,1.2rem);max-width:52ch}
+.hero .go{margin-top:.6rem;display:inline-block;background:#e8a75c;color:#171208;font-weight:600;padding:.9rem 2rem;border-radius:999px;text-decoration:none;font-size:1rem;box-shadow:0 10px 30px rgba(232,167,92,.35)}
+.wrap{max-width:860px;margin:0 auto;padding:0 6vw 12vh}
+.intro{opacity:.75;margin:2rem 0 3rem;line-height:1.9;font-size:1rem}
+.stage{margin-bottom:2.4rem}
+.stage h3{font-size:1.05rem;font-weight:600;color:#f6d08a;margin-bottom:.7rem;letter-spacing:.02em}
+.stage h3 .sn{display:inline-block;min-width:2rem;color:#e8a75c;font-weight:700}
+.row{display:flex;align-items:center;gap:1rem;padding:.85rem 1.1rem;border:1px solid rgba(255,255,255,.08);border-radius:14px;margin-bottom:.55rem;background:rgba(255,255,255,.03);text-decoration:none;color:inherit}
+.row .cn{font-size:.85rem;color:#e8a75c;min-width:2.2rem;font-weight:600}
+.row .ct{flex:1;font-family:"Noto Serif Bengali",serif;font-size:1.05rem}
+.row .st{font-size:.8rem;opacity:.5}
+.row.live{border-color:rgba(232,167,92,.5);background:rgba(232,167,92,.08)}
+.row.live .st{color:#f6d08a;opacity:1;font-weight:600}
+.row.live:hover{background:rgba(232,167,92,.16)}
+.side{border-top:1px solid rgba(255,255,255,.1);margin-top:3rem;padding-top:2rem}
+.side h3{font-size:1rem;color:#f6d08a;margin-bottom:.7rem}
+.side a.row{color:inherit}
+.side .st{opacity:.6}
+@media (max-width:640px){.row{padding:.75rem .9rem}.row .ct{font-size:.98rem}}
 </style>
 </head>
 <body>
-<div id="bg"></div>
-<div id="bar"></div>
-<nav id="dots"></nav>
-<div id="hint">Scroll</div>
-<main id="story"></main>
-<script>
-/* ===== নতুন গল্প এখানে লিখো =====
-   scene = কোন ব্যাকগ্রাউন্ড ছবি (scene1.webp ... sceneN.webp)
-   SCENE_COUNT আর ছবির সংখ্যা মিলিয়ে দিলেই নতুন গল্প চলবে। */
-const SCENE_COUNT = 12;
-const STORY = {
-  title: "\u09a8\u09a6\u09c0 \u09a5\u09c7\u09ae\u09c7 \u09a5\u09be\u0995\u09c7 \u09a8\u09be",
-  subtitle: "\u098f\u0995\u099f\u09be \u09ad\u09be\u0999\u09cd\u0997\u09be \u09b9\u09c3\u09a6\u09af\u09bc\u09c7\u09b0 \u0997\u09b2\u09cd\u09aa \u0964 \u09a7\u09c0\u09b0\u09c7 \u09b8\u09cd\u0995\u09cd\u09b0\u09b2 \u0995\u09b0\u09cb \u2014 \u09a8\u09a6\u09c0 \u09a4\u09cb\u09ae\u09be\u09b0 \u09b8\u0999\u09cd\u0997\u09c7 \u099a\u09b2\u09ac\u09c7 \u0964",
-  endTitle: "\u09b8\u09ae\u09be\u09aa\u09cd\u09a4",
-  endNote: "\u0989\u09aa\u09b0\u09c7 \u0989\u09a0\u09c7 \u0986\u09ac\u09be\u09b0 \u09aa\u09a1\u09bc\u09cb",
-  sections: [
-    {scene:1, text:"\u09ae\u09cb\u09b9\u09a8\u09be \u0998\u09be\u099f\u09c7\u09b0 \u09aa\u09c1\u09b0\u09cb\u09a8\u09cb \u09b8\u09bf\u0981\u09a1\u09bc\u09bf\u09a4\u09c7 \u09aa\u09cd\u09b0\u09a4\u09bf\u09a6\u09bf\u09a8 \u09b8\u09a8\u09cd\u09a7\u09cd\u09af\u09be\u09af\u09bc \u09ac\u09b8\u09a4 \u09b0\u09be\u09ab\u09bf\u0964 \u09a8\u09a6\u09c0\u09b0 \u0993\u09aa\u09be\u09b0\u09c7 \u09b8\u09c2\u09b0\u09cd\u09af \u09a1\u09c1\u09ac\u09b2\u09c7 \u09b8\u09c7 \u0997\u09c1\u09a8\u09a4 \u2014 \u09b2\u099e\u09cd\u099a\u0997\u09c1\u09b2\u09cb \u0995\u09a4\u099f\u09be \u0986\u09b2\u09cb \u09ac\u09b9\u09a8 \u0995\u09b0\u09c7 \u0998\u09b0\u09c7 \u09ab\u09c7\u09b0\u09c7\u0964 \u09ac\u09be\u09ac\u09be\u09b0 \u09ae\u09c3\u09a4\u09cd\u09af\u09c1\u09b0 \u09aa\u09b0 \u099c\u09c7\u09b2\u09c7\u09aa\u09be\u09dc\u09bc\u09be\u09b0 \u098f\u0987 \u0998\u09be\u099f\u0987 \u09a4\u09be\u09b0 \u098f\u0995\u09ae\u09be\u09a4\u09cd\u09b0 \u09ad\u09b0\u09b8\u09be, \u0986\u09b0 \u09b8\u09cd\u09ac\u09aa\u09cd\u09a8\u099f\u09be \u099b\u09bf\u09b2 \u099b\u09cb\u099f: \u09a8\u09a6\u09c0\u09b0 \u0993\u09aa\u09be\u09b0\u09c7\u09b0 \u09b8\u09cd\u0995\u09c1\u09b2\u09c7 \u09b6\u09bf\u0995\u09cd\u09b7\u0995 \u09b9\u0993\u09af\u09bc\u09be\u0964"},
-    {scene:2, text:"\u09a4\u09be\u09b0\u09aa\u09b0 \u098f\u0995 \u09ad\u09cb\u09b0\u09c7 \u0995\u09c1\u09af\u09bc\u09be\u09b6\u09be \u09ad\u09c7\u09a6 \u0995\u09b0\u09c7 \u09b2\u099e\u09cd\u099a \u09a5\u09c7\u0995\u09c7 \u09a8\u09be\u09ae\u09b2 \u09a4\u09be\u09b0\u09be \u2014 \u09a8\u09a6\u09c0\u09b0 \u0993\u09aa\u09be\u09b0\u09c7\u09b0 \u09b8\u09cd\u0995\u09c1\u09b2\u09ae\u09bf\u09b8\u09cd\u09a4\u09cd\u09b0\u09c0\u09b0 \u09ae\u09c7\u09af\u09bc\u09c7, \u09b9\u09be\u09a4\u09c7 \u09ac\u0987\u09af\u09bc\u09c7\u09b0 \u09ac\u09cd\u09af\u09be\u0997, \u099a\u09cb\u0996\u09c7 \u0985\u09a6\u09cd\u09ad\u09c1\u09a4 \u098f\u0995 \u09a6\u09c1\u09b8\u09be\u09b9\u09b8\u0964 \u0998\u09be\u099f\u09c7\u09b0 \u09b8\u09bf\u0981\u09a1\u09bc\u09bf \u09ad\u09bf\u099c\u09c7 \u099b\u09bf\u09b2; \u09b0\u09be\u09ab\u09bf \u098f\u0997\u09bf\u09af\u09bc\u09c7 \u0997\u09bf\u09af\u09bc\u09c7 \u09b9\u09be\u09a4 \u09a7\u09b0\u09c7 \u09a4\u09c1\u09b2\u09b2\u0964 \u2018\u09a7\u09a8\u09cd\u09af\u09ac\u09be\u09a6,\u2019 \u09b8\u09c7 \u09ac\u09b2\u09b2, \u2018\u09a4\u09cb\u09ae\u09be\u09b0 \u09a8\u09a6\u09c0\u099f\u09be \u0995\u09bf \u09b8\u09ac\u09b8\u09ae\u09af\u09bc \u098f\u09ae\u09a8 \u09b6\u09be\u09a8\u09cd\u09a4 \u09a5\u09be\u0995\u09c7?\u2019"},
-    {scene:3, text:"\u099a\u09be \u09a6\u09cb\u0995\u09be\u09a8\u09c7\u09b0 \u09aa\u09c1\u09b0\u09cb\u09a8\u09cb \u09ac\u09c7\u099e\u09cd\u099a\u09c7 \u09a4\u09be\u09b0\u09aa\u09b0 \u09ac\u09b8\u09a4 \u09a4\u09be\u09a6\u09c7\u09b0 \u09b8\u09a8\u09cd\u09a7\u09cd\u09af\u09be\u0964 \u0995\u09c7\u09a4\u09b2\u09bf\u09b0 \u09a7\u09cb\u09af\u09bc\u09be, \u0997\u09b2\u09cd\u09aa, \u0986\u09b0 \u09b9\u09be\u09b8\u09bf \u2014 \u098f\u09a4 \u09b8\u09b9\u099c\u09c7 \u09ad\u09b0\u09b8\u09be \u09b9\u09af\u09bc\u09c7 \u0993\u09a0\u09c7 \u09ae\u09be\u09a8\u09c1\u09b7, \u09b0\u09be\u09ab\u09bf \u09a4\u0996\u09a8 \u099c\u09be\u09a8\u09a4 \u09a8\u09be\u0964 \u09a4\u09be\u09b0\u09be \u09ac\u09b2\u09a4, \u2018\u09b6\u09bf\u0995\u09cd\u09b7\u0995 \u09b9\u09ac\u09c7 \u09b6\u09c1\u09a8\u09c7\u099b\u09bf? \u0986\u09ae\u09be\u09b0\u0993 \u09a4\u09cb \u0993\u09aa\u09be\u09b0\u09c7 \u09b8\u09cd\u0995\u09c1\u09b2 \u0996\u09c1\u09b2\u09a4\u09c7 \u0987\u099a\u09cd\u099b\u09c7 \u0995\u09b0\u09c7\u0964\u2019 \u09a6\u09c1\u099f\u09cb \u09b8\u09cd\u09ac\u09aa\u09cd\u09a8 \u098f\u0995 \u09a8\u09a6\u09c0\u09b0 \u09a6\u09c1\u0987 \u09aa\u09be\u09a1\u09bc\u09c7 \u0997\u09a1\u09bc\u09c7 \u0989\u09a0\u099b\u09bf\u09b2\u0964"},
-    {scene:4, text:"\u09b6\u09cd\u09b0\u09be\u09ac\u09a3\u09c7\u09b0 \u098f\u0995 \u09b8\u09a8\u09cd\u09a7\u09cd\u09af\u09be\u09af\u09bc \u09ac\u09c3\u09b7\u09cd\u099f\u09bf \u098f\u09b2 \u09b9\u09a0\u09ce\u09a4\u0964 \u098f\u0995\u099f\u09be\u0987 \u099b\u09be\u09a4\u09be, \u09a6\u09c1\u099c\u09a8 \u09ae\u09be\u09a8\u09c1\u09b7, \u0986\u09b0 \u09b8\u09cd\u09b2\u09c7\u09b7\u09c7 \u09ad\u09c7\u099c\u09be \u09b0\u09be\u09b8\u09cd\u09a4\u09be\u0964 \u2018\u09ad\u09af\u09bc \u09a8\u09c7\u0987,\u2019 \u09a4\u09be\u09b0\u09be \u09ac\u09b2\u09b2, \u2018\u09ac\u09c3\u09b7\u09cd\u099f\u09bf \u09a4\u09cb \u09a5\u09be\u09ae\u09ac\u09c7\u0987\u0964\u2019 \u09b0\u09be\u09ab\u09bf \u09b8\u09c7\u09a6\u09bf\u09a8 \u09ac\u09c1\u099d\u09b2, \u09ad\u09be\u09b2\u09cb\u09ac\u09be\u09b8\u09be \u09ae\u09be\u09a8\u09c7 \u099d\u09a1\u09bc\u09c7\u09b0 \u09ae\u09a7\u09cd\u09af\u09c7 \u099b\u09be\u09a4\u09be \u09ad\u09be\u0997 \u0995\u09b0\u09c7 \u09a8\u09c7\u0993\u09af\u09bc\u09be \u2014 \u0986\u09b0 \u09b8\u09c7 \u09ad\u09be\u09ac\u09a4, \u099c\u09c0\u09ac\u09a8\u09c7 \u0986\u09b0 \u0995\u09cb\u09a8\u09cb \u099d\u09a1\u09bc \u09a4\u09be\u09a6\u09c7\u09b0 \u09ad\u09c7\u09a6 \u0995\u09b0\u09a4\u09c7 \u09aa\u09be\u09b0\u09ac\u09c7 \u09a8\u09be\u0964"},
-    {scene:5, text:"\u0995\u09bf\u09a8\u09cd\u09a4\u09c1 \u099d\u09a1\u09bc \u0986\u09b8\u09c7, \u0986\u0997\u09c7 \u09a5\u09c7\u0995\u09c7 \u09a1\u09c7\u0995\u09c7 \u09a8\u09be\u0964 \u09b6\u09b0\u09a4 \u09b6\u09c7\u09b7\u09c7 \u0996\u09ac\u09b0 \u098f\u09b2: \u09a4\u09be\u09b0\u09be\u09b0 \u09ac\u09bf\u09af\u09bc\u09c7 \u09a0\u09bf\u0995 \u09b9\u09af\u09bc\u09c7\u099b\u09c7, \u09a2\u09be\u0995\u09be\u09b0 \u098f\u0995 \u09aa\u09b0\u09bf\u099a\u09bf\u09a4 \u0998\u09b0\u09c7\u0964 \u0998\u09be\u099f\u09c7\u09b0 \u09b8\u09bf\u0981\u09a1\u09bc\u09bf\u09a4\u09c7 \u09b8\u09c7 \u09b0\u09be\u09a4\u09c7 \u09a6\u09c1\u099c\u09a8 \u09ac\u09b8\u09c7 \u099b\u09bf\u09b2, \u09ae\u09be\u099d\u09c7 \u098f\u0995\u099f\u09be \u09b2\u09a3\u09cd\u09a0\u09a8, \u0986\u09b0 \u0995\u09a5\u09be\u0997\u09c1\u09b2\u09cb \u09aa\u09be\u09a5\u09b0\u09c7\u09b0 \u09ae\u09a4\u09cb \u09ad\u09be\u09b0\u09c0\u0964 \u2018\u0986\u09ae\u09bf \u099a\u09c7\u09af\u09bc\u09c7\u099b\u09bf\u09b2\u09be\u09ae,\u2019 \u09a4\u09be\u09b0\u09be \u09ab\u09bf\u09b8\u09ab\u09bf\u09b8 \u0995\u09b0\u09b2, \u2018\u0995\u09bf\u09a8\u09cd\u09a4\u09c1 \u0986\u09ae\u09be\u09b0 \u09ac\u09be\u09ac\u09be \u09a8\u09bf\u099c\u09c7\u0987 \u09a0\u09bf\u0995 \u0995\u09b0\u09c7 \u09a6\u09bf\u09df\u09c7\u099b\u09c7\u09a8\u0964\u2019"},
-    {scene:6, text:"\u09af\u09be\u0993\u09af\u09bc\u09be\u09b0 \u09a6\u09bf\u09a8 \u09ad\u09cb\u09b0\u09c7 \u0998\u09be\u099f\u09c7 \u098f\u09b2 \u09a4\u09be\u09b0\u09be\u0964 \u0995\u09c1\u09af\u09bc\u09be\u09b6\u09be\u09af\u09bc \u09a6\u09c1\u099f\u09cb \u09b9\u09be\u09a4 \u098f\u0995\u09ac\u09be\u09b0 \u099b\u09c1\u0981\u09af\u09bc\u09c7 \u0997\u09c7\u09b2\u0964 \u2018\u099a\u09bf\u09a0\u09bf \u09b2\u09bf\u0996\u09ac,\u2019 \u09b8\u09c7 \u09ac\u09b2\u09b2, \u2018\u09aa\u09cd\u09b0\u09a4\u09bf \u09ae\u09be\u09b8\u09c7\u0964\u2019 \u09b2\u099e\u09cd\u099a\u099f\u09be \u0995\u09c1\u09af\u09bc\u09be\u09b6\u09be \u0997\u09bf\u09b2\u09c7 \u09a8\u09bf\u09df\u09c7 \u0997\u09c7\u09b2 \u09a6\u09c1\u099c\u09a8\u0995\u09c7 \u09a6\u09c1\u0987 \u09a6\u09bf\u0995\u09c7\u0964 \u09b0\u09be\u09ab\u09bf \u09a6\u09be\u0981\u09a1\u09bc\u09bf\u09af\u09bc\u09c7 \u09b0\u0987\u09b2 \u09b8\u09c7\u0987 \u09b0\u09cb\u09a6 \u0993\u09a0\u09be\u09b0 \u0986\u0997\u09c7 \u2014 \u09ad\u09c7\u09ac\u09c7\u099b\u09bf\u09b2, \u09a6\u09c2\u09b0\u09a4\u09cd\u09ac \u09ae\u09be\u09a8\u09c7 \u09b6\u09c1\u09a7\u09c1 \u099a\u09bf\u09a0\u09bf\u09b0 \u09a6\u09bf\u09a8 \u09ac\u09be\u09a1\u09bc\u09be\u0964"},
-    {scene:7, text:"\u099a\u09bf\u09a0\u09bf \u0986\u09b8\u09a4, \u09a4\u09bf\u09a8 \u09ae\u09be\u09b8\u0964 \u09a4\u09be\u09b0\u09aa\u09b0 \u0996\u09be\u09ae\u09c7\u09b0 \u09a0\u09bf\u0995\u09be\u09a8\u09be\u09af\u09bc \u09b6\u09c1\u09a7\u09c1 \u09a8\u09a6\u09c0\u09b0 \u09ae\u09a4\u09cb \u09a8\u09c0\u09b0\u09ac\u09a4\u09be\u0964 \u099c\u09be\u09a8\u09be\u09b2\u09be\u09b0 \u09b8\u09bf\u0981\u09a1\u09bc\u09bf\u09a4\u09c7 \u099c\u09ae\u09c7 \u09a5\u09be\u0995\u09be \u099a\u09bf\u09a0\u09bf\u0997\u09c1\u09b2\u09cb \u09b0\u09be\u09ab\u09bf \u09ac\u09c7\u0981\u09a7\u09c7 \u09b0\u09be\u0996\u09b2 \u09b8\u09c1\u09a4\u09be\u09af\u09bc \u2014 \u09af\u09a4\u09a6\u09bf\u09a8\u09c7\u09b0 \u09ad\u09be\u09b2\u09cb\u09ac\u09be\u09b8\u09be, \u09a4\u09a4 \u0993\u099c\u09a8\u0964 \u09ae\u09be\u09a8\u09c1\u09b7 \u09ac\u09a6\u09b2\u09be\u09af\u09bc, \u0995\u09bf\u09a8\u09cd\u09a4\u09c1 \u099a\u09bf\u09a0\u09bf \u09ac\u09a6\u09b2\u09be\u09af\u09bc \u09a8\u09be; \u098f\u0987 \u09aa\u09cd\u09b0\u09a5\u09ae \u09b8\u09c7 \u099c\u09be\u09a8\u09b2, \u0985\u09aa\u09c7\u0995\u09cd\u09b7\u09be\u09b0 \u099a\u09c7\u09af\u09bc\u09c7 \u09a8\u09c0\u09b0\u09ac\u09a4\u09be \u09ac\u09a1\u09bc \u0995\u09b7\u09cd\u099f\u0964"},
-    {scene:8, text:"\u09ac\u099b\u09b0 \u0998\u09c1\u09b0\u09a4\u09c7 \u098f\u09b2 \u0986\u09b0\u09c7\u0995 \u0996\u09ac\u09b0 \u2014 \u09a4\u09be\u09b0\u09be\u09b0 \u09ac\u09bf\u09af\u09bc\u09c7 \u09b9\u09af\u09bc\u09c7 \u0997\u09c7\u099b\u09c7\u0964 \u09b8\u09c7\u09a6\u09bf\u09a8 \u09ac\u09c3\u09b7\u09cd\u099f\u09bf\u09a4\u09c7 \u0998\u09be\u099f \u09ab\u09be\u0981\u0995\u09be; \u09b0\u09be\u09ab\u09bf \u099b\u09be\u09a4\u09be\u099f\u09be \u0996\u09c1\u09b2\u09c7\u0993 \u09a4\u09c1\u09b2\u09b2 \u09a8\u09be, \u09ad\u09c7\u099c\u09be \u09ac\u09b8\u09c7 \u09b0\u0987\u09b2 \u0998\u09a3\u09cd\u099f\u09be\u09b0 \u09aa\u09b0 \u0998\u09a3\u09cd\u099f\u09be\u0964 \u09b9\u09c3\u09a6\u09af\u09bc \u09ad\u09be\u0999\u09cd\u0997\u09be \u09ae\u09be\u09a8\u09c7 \u09b6\u09ac\u09cd\u09a6 \u09b9\u09af\u09bc \u09a8\u09be, \u099c\u09be\u09a8\u09cb? \u09b8\u09c7 \u09b6\u09ac\u09cd\u09a6\u099f\u09be \u09b8\u09c7\u09a6\u09bf\u09a8 \u09aa\u09cd\u09b0\u09a5\u09ae \u09b6\u09c1\u09a8\u09b2 \u2014 \u09ac\u09c3\u09b7\u09cd\u099f\u09bf\u09b0 \u09ad\u09c7\u09a4\u09b0\u09c7, \u09a8\u09bf\u099c\u09c7\u09b0 \u09ac\u09c1\u0995\u09c7\u09b0 \u09ad\u09c7\u09a4\u09b0\u09c7\u0964"},
-    {scene:9, text:"\u09b0\u09be\u09a4\u0997\u09c1\u09b2\u09cb \u098f\u09b0\u09aa\u09b0 \u0995\u09be\u099f\u09b2 \u09b0\u09be\u0997\u09c7\u0964 \u09a8\u09a6\u09c0\u0995\u09c7 \u09a6\u09cb\u09b7 \u09a6\u09bf\u09b2, \u09ad\u09be\u0997\u09cd\u09af\u0995\u09c7 \u09a6\u09bf\u09b2, \u09a8\u09bf\u099c\u09c7\u0995\u09c7 \u09a6\u09bf\u09b2\u0964 \u09ac\u099c\u09cd\u09b0 \u099b\u099f\u09ab\u099f \u0995\u09b0\u09a4, \u0986\u09b0 \u09b8\u09c7 \u0998\u09be\u099f\u09c7\u09b0 \u09b6\u09c7\u09b7 \u09b8\u09bf\u0981\u09a1\u09bc\u09bf\u09a4\u09c7 \u09a6\u09be\u0981\u09a1\u09bc\u09bf\u09af\u09bc\u09c7 \u09a8\u09a6\u09c0\u09b0 \u0993\u09aa\u09be\u09b0\u09c7 \u0995\u09c7\u0989 \u09b6\u09c1\u09a8\u09a4 \u09a8\u09be\u0964 \u0995\u09cd\u09b7\u09cb\u09ad \u09ad\u09be\u09b2\u09cb \u099c\u09bf\u09a8\u09bf\u09b8 \u09a8\u09af\u09bc, \u0995\u09bf\u09a8\u09cd\u09a4\u09c1 \u09ad\u09be\u0999\u09cd\u0997\u09be \u09ae\u09be\u09a8\u09c1\u09b7\u09c7\u09b0 \u09aa\u09cd\u09b0\u09a5\u09ae \u09ad\u09be\u09b7\u09be \u2014 \u0995\u09b7\u09cd\u099f\u099f\u09be \u09ac\u099f\u09c7\u09b0 \u09a8\u09c0\u09a4\u09bf \u09a8\u09c7\u0987 \u09ac\u09be\u09a7 \u09a6\u09c7\u09af\u09bc\u0964"},
-    {scene:10, text:"\u09a4\u09be\u09b0\u09aa\u09b0 \u098f\u0995 \u09b0\u09be\u09a4\u09c7 \u09aa\u09c1\u09b0\u09cb\u09a8\u09cb \u09ae\u09be\u099d\u09bf \u0995\u09b0\u09bf\u09ae \u099a\u09be\u099a\u09be\u09b0 \u09a8\u09cc\u0995\u09be\u09af\u09bc \u0989\u09a0\u09b2 \u09b8\u09c7\u0964 \u099a\u09be\u099a\u09be \u09b2\u09a3\u09cd\u09a0\u09a8 \u099c\u09cd\u09ac\u09be\u09b2\u09bf\u09af\u09bc\u09c7 \u09ac\u09b2\u09b2, \u2018\u09a8\u09a6\u09c0 \u09a5\u09c7\u09ae\u09c7 \u09a5\u09be\u0995\u09c7 \u09a8\u09be, \u09b0\u09c7\u0964 \u09a5\u09c7\u09ae\u09b2\u09c7 \u09a4\u09cb \u09ae\u09b0\u09c7\u0964 \u09a4\u09c1\u0987 \u09a5\u09c7\u09ae\u09c7 \u0997\u09c7\u099b\u09bf\u09b8 \u09ac\u09b2\u09c7\u0987 \u09ac\u09cd\u09af\u09a5\u09be \u09ac\u09be\u09a1\u09bc\u099b\u09c7\u0964 \u099a\u09b2\u09c7 \u09af\u09be, \u09a4\u09c7\u09b0\u09aa\u09b0 \u09a6\u09c7\u0996 \u2014 \u09ac\u09cd\u09af\u09a5\u09be \u09a4\u09cb \u09aa\u09c7\u099b\u09a8\u09c7 \u09a5\u09be\u0995\u09ac\u09c7, \u0995\u09bf\u09a8\u09cd\u09a4\u09c1 \u099a\u09b2\u09c7 \u09af\u09be\u0993\u09af\u09bc\u09be\u099f\u09be \u09a4\u09cb \u099c\u09c0\u09ac\u09a8\u0964\u2019 \u09b8\u09c7 \u09b0\u09be\u09a4\u09c7 \u09b0\u09be\u09ab\u09bf \u09aa\u09cd\u09b0\u09a5\u09ae \u0995\u09be\u09a8\u09cd\u09a6\u09c7 \u09ab\u09c7\u09b2\u09b2 \u09ae\u09be\u09a8\u09c1\u09b7\u09c7\u09b0 \u09b8\u09be\u09ae\u09a8\u09c7\u0964"},
-    {scene:11, text:"\u098f\u09b0\u09aa\u09b0 \u09ac\u099b\u09b0 \u09aa\u09be\u0981\u099a\u09c7\u0995 \u0995\u09c7\u099f\u09c7 \u0997\u09c7\u09b2 \u09a7\u09c0\u09b0\u09c7\u0964 \u09b0\u09be\u09ab\u09bf \u0993\u09aa\u09be\u09b0\u09c7\u09b0 \u09b8\u09cd\u0995\u09c1\u09b2\u09c7 \u09b6\u09bf\u0995\u09cd\u09b7\u0995 \u09b9\u09b2\u09cb, \u09aa\u09cd\u09b0\u09a4\u09bf\u09a6\u09bf\u09a8 \u09a8\u09cc\u0995\u09be\u09af\u09bc \u0995\u09b0\u09c7 \u09ac\u09be\u099a\u09cd\u099a\u09be\u09a6\u09c7\u09b0 \u09a8\u09bf\u09af\u09bc\u09c7 \u09a8\u09a6\u09c0 \u09aa\u09be\u09b0 \u0995\u09b0\u09a4\u0964 \u0995\u09c7\u0989 \u099c\u09be\u09a8\u09a4 \u09a8\u09be \u09a4\u09be\u09b0 \u09ac\u09c1\u0995\u09c7\u09b0 \u09ad\u09c7\u09a4\u09b0 \u0995\u09c0 \u0986\u099b\u09c7; \u09ac\u09be\u099a\u09cd\u099a\u09be\u09a6\u09c7\u09b0 \u09b9\u09be\u09b8\u09bf\u09b0 \u09ad\u09be\u09b0 \u09ac\u09b9\u09a8\u09c7 \u09ae\u09be\u09a8\u09c1\u09b7 \u09a8\u09bf\u099c\u09c7\u09b0 \u09ad\u09be\u09b0 \u09ad\u09c1\u09b2\u09c7 \u09af\u09be\u09af\u09bc \u2014 \u09b8\u09c7 \u09aa\u09cd\u09b0\u09a4\u09bf\u09a6\u09bf\u09a8 \u09b8\u09c7\u0987 \u099c\u09be\u09a6\u09c1 \u09a6\u09c7\u0996\u09a4\u0964"},
-    {scene:12, text:"\u0986\u099c\u0993 \u09b6\u09cd\u09b0\u09be\u09ac\u09a3\u09c7 \u09ac\u09c3\u09b7\u09cd\u099f\u09bf \u09a8\u09be\u09ae\u09b2\u09c7 \u09b0\u09be\u09ab\u09bf \u0993\u0987 \u09b0\u09be\u09b8\u09cd\u09a4\u09be\u099f\u09be \u09ae\u09a8\u09c7 \u0995\u09b0\u09c7, \u09a4\u09ac\u09c7 \u09b9\u09be\u09b8\u09bf\u09ae\u09c1\u0996\u09c7\u0964 \u098f\u0995\u09a6\u09bf\u09a8 \u09ab\u09c7\u09b0\u09bf\u09a4\u09c7 \u09ac\u09c3\u09b7\u09cd\u099f\u09bf\u09b0 \u09ae\u09be\u099d\u09c7 \u09a6\u09c2\u09b0\u09c7 \u09b0\u0993\u099a\u09cd\u099b\u09a8\u09c1 \u09a6\u09c7\u0996\u09c7 \u09ac\u09c1\u099d\u09b2: \u09ad\u09be\u09b2\u09cb\u09ac\u09be\u09b8\u09be \u09b9\u09be\u09b0\u09be\u09af\u09bc \u09a8\u09be, \u09b6\u09c7\u0996\u09be \u09b9\u09af\u09bc\u0964 \u09ad\u09be\u0999\u09cd\u0997\u09be \u09b9\u09c3\u09a6\u09af\u09bc \u09ae\u09be\u09a8\u09c7 \u09b6\u09c7\u09b7 \u09a8\u09af\u09bc \u2014 \u0993\u0996\u09be\u09a8 \u09a5\u09c7\u0995\u09c7\u0987 \u0986\u09b8\u09b2 \u0997\u09b2\u09cd\u09aa\u099f\u09be \u09b6\u09c1\u09b0\u09c1 \u09b9\u09af\u09bc\u0964 \u09a8\u09a6\u09c0 \u098f\u0996\u09a8\u09cb \u09ac\u09af\u09bc\u09c7 \u09af\u09be\u09af\u09bc; \u09b8\u09c7\u0993\u0964"}
-  ]
-};
-/* ================================ */
-
-document.documentElement.classList.add('js');
-const bn=n=>String(n).replace(/\d/g,d=>'\u09e6\u09e7\u09e8\u09e9\u09ea\u09eb\u09ec\u09ed\u09ee\u09ef'[d]);
-const bg=document.getElementById('bg');
-for(let i=1;i<=SCENE_COUNT;i++){
-  const el=document.createElement('div');
-  el.className='layer';
-  el.style.backgroundImage=`url(scene${i}.webp)`;
-  bg.appendChild(el);
-}
-const veil=document.createElement('div');veil.className='veil';bg.appendChild(veil);
-const tint=document.createElement('div');tint.className='tint';bg.appendChild(tint);
-
-const main=document.getElementById('story');
-const words=STORY.sections.map(s=>s.text).join(" ").split(/\s+/).length;
-const mins=Math.max(1,Math.round(words/140));
-const hero=document.createElement('section');hero.className='hero';
-hero.dataset.scene=1;
-hero.innerHTML=`<div class="kicker">ScrollTales</div><h1>${STORY.title}</h1><p class="sub">${STORY.subtitle} \u00b7 \u09aa\u09a1\u09bc\u09a4\u09c7 \u09aa\u09cd\u09b0\u09be\u09af\u09bc ${bn(mins)} \u09ae\u09bf\u09a8\u09bf\u099f</p>`;
-main.appendChild(hero);
-STORY.sections.forEach((s,i)=>{
-  const sec=document.createElement('section');
-  if(i%2===1)sec.className='r';
-  sec.dataset.scene=s.scene;
-  sec.innerHTML=`<div class="card"><div class="num">\u09a6\u09c3\u09b6\u09cd\u09af ${bn(String(s.scene).padStart(2,'0'))}</div><p>${s.text}</p></div>`;
-  main.appendChild(sec);
-});
-const end=document.createElement('section');end.className='end';end.dataset.scene=SCENE_COUNT;
-end.innerHTML=`<div class="big">${STORY.endTitle}</div><div class="small">${STORY.endNote}</div><p class="morewrap"><a class="more" href="story2.html">আরেকটা গল্প পড়ো: আলো জ্বলে ধীরে</a></p>`;
-main.appendChild(end);
-
-const dots=document.getElementById('dots');
-STORY.sections.forEach((s,i)=>{
-  const a=document.createElement('a');a.href='#';a.dataset.i=i;dots.appendChild(a);
-});
-dots.addEventListener('click',e=>{
-  e.preventDefault();
-  const i=+e.target.dataset.i;
-  main.querySelectorAll('section')[i+1].scrollIntoView({behavior:'smooth'});
-});
-
-const secs=[...document.querySelectorAll('section')];
-function reveal(){
-  document.querySelectorAll('.card').forEach(c=>{
-    if(c.getBoundingClientRect().top<innerHeight*.85)c.classList.add('on');
-  });
-}
-addEventListener('scroll',reveal,{passive:true});
-addEventListener('resize',reveal,{passive:true});
-reveal();
-
-const layers=[...document.querySelectorAll('.layer')];
-const bar=document.getElementById('bar');
-const hint=document.getElementById('hint');
-const sceneOf=secs.map(s=>+s.dataset.scene);
-function onScroll(){
-  const max=document.documentElement.scrollHeight-innerHeight;
-  const p=max>0?Math.min(1,Math.max(0,scrollY/max)):0;
-  bar.style.width=(p*100)+'%';
-  hint.classList.toggle('gone',scrollY>innerHeight*.25);
-  const nb=secs.length;
-  const f=p*(nb-1);
-  const k=Math.min(nb-2,Math.floor(f));
-  const frac=f-k;
-  const t=sceneOf[k]-1+(sceneOf[k+1]-sceneOf[k])*frac;
-  layers.forEach((ly,i)=>{
-    const o=Math.max(0,Math.min(1,1-Math.abs(t-i)));
-    ly.style.opacity=o;
-    ly.style.transform=`scale(${1.06+Math.abs(t-i)*.05}) translateY(${(t-i)*14}px)`;
-  });
-  const cur=Math.round(t);
-  [...dots.children].forEach((a,i)=>a.classList.toggle('act',i===cur-1));
-}
-addEventListener('scroll',onScroll,{passive:true});
-onScroll();
-</script>
+<div class="hero">
+  <div class="kicker">ScrollTales সিরিজ</div>
+  <h1>জীবনগাথা</h1>
+  <p class="sub">একটা মানুষের পুরো জীবন — জন্মের রাত থেকে শেষ বিদায় পর্যন্ত ৬৬টা পর্ব, দশটা দশায়। প্রতিটা পর্ব আলাদা গল্প, স্ক্রল করলে সিন বদলায়, পাশে লেখা ওঠে।</p>
+  <a class="go" href="jibon/01.html">পর্ব ১ থেকে শুরু করুন</a>
+</div>
+<div class="wrap">
+<p class="intro">এই সিরিজে থাকবে শিশুকালের কয়েকটা গল্প, স্কুলে ভর্তির দিনগুলো, পড়াশোনা, উচ্চ বিদ্যালয় আর কলেজের জীবন, প্রেম ও দুঃখ, বিশ্ববিদ্যালয়, চাকরি, পরিবার আর তার দায়িত্ব — শেষে বৃদ্ধ বয়স আর বিদায়। প্রতি সপ্তাহে নতুন পর্ব যুক্ত হবে।</p>
+<div class="stage"><h3><span class="sn">১</span> জন্ম ও শৈশব</h3><a class="row live" href="jibon/01.html"><span class="cn">0১</span><span class="ct">প্রথম কান্না</span><span class="st go">পড়ুন →</span></a><div class="row soon"><span class="cn">0২</span><span class="ct">উঠানের হামাগুড়ি</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">0৩</span><span class="ct">প্রথম পা ও প্রথম শব্দ</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">0৪</span><span class="ct">দিদিমার রূপকথা</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">0৫</span><span class="ct">প্রথম বর্ষা</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">0৬</span><span class="ct">বোন পিয়ার জন্ম</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">0৭</span><span class="ct">হারানো পাখি</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">0৮</span><span class="ct">শৈশবের শেষ দিন</span><span class="st">আসছে</span></div></div><div class="stage"><h3><span class="sn">২</span> স্কুল জীবন</h3><div class="row soon"><span class="cn">0৯</span><span class="ct">স্কুলের প্রথম দিন</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">১০</span><span class="ct">প্রথম বন্ধু</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">১১</span><span class="ct">পড়ার ভয়</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">১২</span><span class="ct">শিক্ষকের ভালোবাসা</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">১৩</span><span class="ct">প্রথম পুরস্কার</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">১৪</span><span class="ct">খেলার মাঠ</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">১৫</span><span class="ct">প্রথম অসুখ</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">১৬</span><span class="ct">পঞ্চম শ্রেণির রেজাল্ট</span><span class="st">আসছে</span></div></div><div class="stage"><h3><span class="sn">৩</span> উচ্চ বিদ্যালয়</h3><div class="row soon"><span class="cn">১৭</span><span class="ct">নতুন শহরের স্কুল</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">১৮</span><span class="ct">বন্ধুদের দল</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">১৯</span><span class="ct">পরীক্ষার চাপ</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">২০</span><span class="ct">বাবার অসুখ</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">২১</span><span class="ct">প্রথম স্বপ্ন</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">২২</span><span class="ct">এসএসসির রাত</span><span class="st">আসছে</span></div></div><div class="stage"><h3><span class="sn">৪</span> কলেজ</h3><div class="row soon"><span class="cn">২৩</span><span class="ct">কলেজের প্রথম দিন</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">২৪</span><span class="ct">নতুন শহর</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">২৫</span><span class="ct">প্রথম ভালোবাসা</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">২৬</span><span class="ct">ভাঙন</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">২৭</span><span class="ct">চা দোকানের বন্ধুরা</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">২৮</span><span class="ct">এইচএসসির শেষ বেলা</span><span class="st">আসছে</span></div></div><div class="stage"><h3><span class="sn">৫</span> বিশ্ববিদ্যালয়</h3><div class="row soon"><span class="cn">২৯</span><span class="ct">ভার্সিটি লাইফ</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">৩০</span><span class="ct">রাত জাগা পড়া</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">৩১</span><span class="ct">বৃত্তি</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">৩২</span><span class="ct">প্রেম</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">৩৩</span><span class="ct">দূরত্ব</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">৩৪</span><span class="ct">গ্র্যাজুয়েশন</span><span class="st">আসছে</span></div></div><div class="stage"><h3><span class="sn">৬</span> চাকরির জীবন</h3><div class="row soon"><span class="cn">৩৫</span><span class="ct">প্রথম চাকরি</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">৩৬</span><span class="ct">শহরে মেস</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">৩৭</span><span class="ct">প্রথম বেতন</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">৩৮</span><span class="ct">বসের শাসন</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">৩৯</span><span class="ct">প্রমোশন</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">৪০</span><span class="ct">হারানো স্বপ্ন</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">৪১</span><span class="ct">গ্রামে ফেরা</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">৪২</span><span class="ct">মায়ের অসুখ</span><span class="st">আসছে</span></div></div><div class="stage"><h3><span class="sn">৭</span> ভালোবাসা ও পরিবার</h3><div class="row soon"><span class="cn">৪৩</span><span class="ct">বিয়ে</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">৪৪</span><span class="ct">নতুন সংসার</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">৪৫</span><span class="ct">প্রথম সন্তান</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">৪৬</span><span class="ct">রাত জাগা</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">৪৭</span><span class="ct">বাবা হওয়ার ভয়</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">৪৮</span><span class="ct">ছেলের স্কুলে ভর্তি</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">৪৯</span><span class="ct">আর্থিক চাপ</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">৫০</span><span class="ct">মা হারানো</span><span class="st">আসছে</span></div></div><div class="stage"><h3><span class="sn">৮</span> দায়িত্ব</h3><div class="row soon"><span class="cn">৫১</span><span class="ct">বাবার শেষ</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">৫২</span><span class="ct">সংসারের ভার</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">৫৩</span><span class="ct">ছেলেমেয়ে বড় হচ্ছে</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">৫৪</span><span class="ct">নিজের স্বপ্ন</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">৫৫</span><span class="ct">ছেলের বিয়ে</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">৫৬</span><span class="ct">নাতনির জন্ম</span><span class="st">আসছে</span></div></div><div class="stage"><h3><span class="sn">৯</span> বৃদ্ধাবস্থা</h3><div class="row soon"><span class="cn">৫৭</span><span class="ct">বাঁকা পিঠ</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">৫৮</span><span class="ct">গ্রামে প্রত্যাবর্তন</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">৫৯</span><span class="ct">পুরোনো চিঠি</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">৬০</span><span class="ct">বন্ধুদের বিদায়</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">৬১</span><span class="ct">নাতনির গল্প</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">৬২</span><span class="ct">শেষ নদী</span><span class="st">আসছে</span></div></div><div class="stage"><h3><span class="sn">১০</span> শেষ অধ্যায়</h3><div class="row soon"><span class="cn">৬৩</span><span class="ct">অসুখ</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">৬৪</span><span class="ct">হাসপাতালের রাত</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">৬৫</span><span class="ct">শেষ চিঠি</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">৬৬</span><span class="ct">উত্তরাধিকার</span><span class="st">আসছে</span></div></div>
+<div class="side">
+<h3>একক গল্প (সিরিজের বাইরে)</h3>
+<a class="row" href="story-nodi.html"><span class="ct">নদী থেমে থাকে না</span><span class="st">ভাঙা হৃদয় · লাইফ লেসন</span></a>
+<a class="row" href="story2.html"><span class="ct">আলো জ্বলে ধীরে</span><span class="st">ক্লাস ফাইভ · পড়া না পারা</span></a>
+</div>
+</div>
 </body>
 </html>
