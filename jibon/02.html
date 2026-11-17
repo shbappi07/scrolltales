@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>জীবনগাথা পর্ব ২ — উঠানের হামাগুড়ি</title>
+<meta name="description" content="জীবনগাথা পর্ব ২ — উঠানের হামাগুড়ি: কোল ছেড়ে মাটিতে, ছানা, দাদু, আর কুয়ার ভয়।">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500;600&family=Noto+Serif+Bengali:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:Inter,"Noto Serif Bengali",serif;background:#0b0e14;color:#f2ede2;overflow-x:hidden}
+#bg{position:fixed;inset:0;z-index:0}
+#bg .layer{position:absolute;inset:-5%;background-size:cover;background-position:center;opacity:0;will-change:opacity,transform}
+#bg .veil{position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 52%,rgba(4,6,11,.62) 100%)}
+#bg .tint{position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,10,18,.35),rgba(8,10,18,.15) 40%,rgba(8,10,18,.5))}
+#bar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,#e8a75c,#f6d08a);z-index:60;box-shadow:0 0 12px rgba(232,167,92,.7)}
+#dots{position:fixed;right:18px;top:50%;transform:translateY(-50%);z-index:60;display:flex;flex-direction:column;gap:10px}
+#dots a{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.25);display:block;transition:all .3s}
+#dots a.act{background:#f6d08a;transform:scale(1.5);box-shadow:0 0 10px rgba(246,208,138,.8)}
+main{position:relative;z-index:2}
+section{min-height:135vh;display:flex;align-items:center;padding:10vh 7vw}
+section .card{max-width:620px;background:rgba(9,12,20,.58);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.09);border-radius:22px;padding:2.4rem 2.6rem;box-shadow:0 24px 60px rgba(0,0,0,.45)}
+@supports not (backdrop-filter:blur(1px)){section .card{background:rgba(9,12,20,.88)}}
+.js .card{opacity:0;transform:translateY(34px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+.js .card.on{opacity:1;transform:none}
+section.r{justify-content:flex-end}
+.num{font-size:.78rem;letter-spacing:.25em;color:#e8a75c;margin-bottom:1.1rem;font-weight:600}
+.card p{font-family:"Noto Serif Bengali",serif;font-size:clamp(1.1rem,2.2vw,1.4rem);line-height:2}
+.hero{min-height:100vh;flex-direction:column;justify-content:center;text-align:center;gap:1.4rem}
+.hero .kicker{font-size:.8rem;letter-spacing:.5em;text-transform:uppercase;color:#e8a75c;font-weight:600}
+h1{font-family:"Noto Serif Bengali",serif;font-size:clamp(2.2rem,6.5vw,4.2rem);font-weight:600;line-height:1.3;text-shadow:0 4px 40px rgba(0,0,0,.6)}
+.hero .sub{opacity:.85;font-size:clamp(1rem,1.8vw,1.2rem);max-width:40ch;margin:0 auto}
+.end{min-height:80vh;justify-content:center;text-align:center;flex-direction:column;gap:1rem}
+.end .big{font-family:"Noto Serif Bengali",serif;font-size:clamp(1.8rem,4vw,2.6rem)}
+.end .small{opacity:.7;letter-spacing:.1em;font-size:.9rem}
+.end .more{color:#f6d08a;text-decoration:none;border-bottom:1px solid rgba(246,208,138,.4);font-size:.95rem}
+#hint{position:fixed;bottom:26px;left:50%;transform:translateX(-50%);z-index:55;font-size:.72rem;letter-spacing:.35em;text-transform:uppercase;opacity:.75;animation:bob 2.2s ease-in-out infinite;transition:opacity .5s}
+#hint.gone{opacity:0}
+@keyframes bob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,8px)}}
+@media (max-width:640px){section{min-height:115vh;padding:8vh 6vw}.card{padding:1.7rem 1.5rem}#dots{right:10px}}
+</style>
+</head>
+<body>
+<div id="bg"></div>
+<div id="bar"></div>
+<nav id="dots"></nav>
+<div id="hint">Scroll</div>
+<main id="story"></main>
+<script>
+/* ===== জীবনগাথা পর্ব ২ =====
+   scene = কোন ব্যাকগ্রাউন্ড ছবি (img/scene1.webp ... img/sceneN.webp)
+   SCENE_COUNT আর ছবির সংখ্যা মিলিয়ে দিলেই নতুন গল্প চলবে। */
+const SCENE_COUNT = 12;
+const IMG = "img2/";
+const STORY = {
+  title: "উঠানের হামাগুড়ি",
+  subtitle: "জীবনগাথা · পর্ব ২ — কোল ছেড়ে মাটিতে, সাগরের প্রথম নিজের জগৎ।",
+  endTitle: "সমাপ্ত",
+  endNote: "পরের পর্ব: প্রথম পা ও প্রথম শব্দ",
+  sections: [
+    {scene:1, text:"সাগরের বয়স তখন দেড় বছর। এক ভোরে মা কোল থেকে নামিয়ে দিলেন উঠানের মাটিতে। প্রথমবার হাত-হাঁটু গড়িয়ে সে এগিয়ে গেল, ধুলোয় দুই হাত ডুবে গেল। পৃথিবীটা হঠাৎ অনেক বড় হয়ে গেল তার চোখে।"},
+    {scene:2, text:"মুরগির ছানাগুলো তার সবচেয়ে বড় রহস্য। সেগুলো তাড়া করতে করতে সে পুরো উঠান পেরিয়ে গেল, গায়ে গুঁড়ি গুঁড়ি ধুলা। ছানাগুলো ছটফট করে পালায়, সাগর হাসে।"},
+    {scene:3, text:"বোন পিয়া পেছনে দৌড়ে, ছেলেটা পড়ে যায় বলে ভয় পায়, আবার তার হাসিতে নিজেই হেসে ফেলে। কাপড়ের দড়ির নিচ দিয়ে দৌড়, কাশফুলের গন্ধ — সকালটা পুরোটা খেলা।"},
+    {scene:4, text:"দুপুরে রান্নাঘরের দরজায় সাগর বসে মাকে দেখে। ধোঁয়া, আগুনের আলো, আর হাঁড়ির গলগল শব্দ। মা ফিরিয়ে তাকিয়ে হাসেন, রান্নার হাত আর ছেলের চোখ — দুটোই একসঙ্গে চলে।"},
+    {scene:5, text:"দাদু উঠানের গামছার ছায়ায় নাতিকে কোলে নিয়ে কাঠবিড়ালির গল্প বলেন। কাঠবিড়ালিটা বাঁশের বেড়ায় বসে শোনে, যেন সে-ই গল্পের নায়ক। সাগরের বড় চোখ দুটো দাদুর মুখে আটকে থাকে।"},
+    {scene:6, text:"সাগরের হাতে প্রথমবার চালের মুঠি দিলেন দাদু। সে ছানাদের সামনে আঙুল খুলে দিল, চাল ঝরে পড়ল, ছানাগুলো ছুটে এল। তার জীবনের প্রথম দান সম্ভবত এটাই — ভালোবাসা না বুঝেই।"},
+    {scene:7, text:"কিন্তু উঠানের এক প্রান্তে কুয়া। এক বিকেলে মা পানি টানছেন, মন দিয়ে, আর সাগর হামাগুড়ি দিয়ে চুপিচুপি কুয়ার কান্ধে চলে এল। মা ঘুরে দেখলেন — হৃদয়টা এক মুহূর্তের জন্য থেমে গেল।"},
+    {scene:8, text:"ছুটে গিয়ে মা ছেলেকে তুলে নিলেন বুকে। ছেলেটাও ভয় পেয়ে কাঁদতে শুরু করেছে। মা দুলোলেন, গায়ে হাত বুলালেন। কান্না থেমে গেল, কিন্তু সেদিন থেকে মায়ের চোখ উঠানে সবসময় তার পেছনে পেছনে।"},
+    {scene:9, text:"দুপুরের তীব্র রোদে উঠানের পাকা কাঠগড়ায় সাগর হামাগুড়ি দেয়, ঘামে চুল ভেজা। দূরে রোদে শুকোচ্ছে ধান। গ্রামটা কাজে মশগুল, আর শিশুটা নিজের জগতে।"},
+    {scene:10, text:"বিকেলে পিয়ার সঙ্গে খেলা — পাতার ওপর পোকা, পাথরের স্তূপ, আমগাছের ছায়া। পিয়া বড় হয়ে যাচ্ছে, সাগর ছোট; দুজনের মাঝে একটা সমান্তরাল শৈশব চলছে।"},
+    {scene:11, text:"সাঁঝের আলোয় সাগর বাঁশের দেয়াল ধরে টেনে দাঁড়াতে চেষ্টা করে। পা দুটো কাঁপে, মুখে জেদ। হাঁটার স্বপ্ন তখন থেকেই তার ভেতরে, কেউ জানে না কতদূর যাবে সেই পা।"},
+    {scene:12, text:"রাতে দোলনায় ঘুম, জোনাকির সারি, নীরব উঠান। মাটির এই উঠানটাই শৈশবের প্রথম স্কুল — পড়ার আগেই সাগর শিখে নিল পড়ে যাওয়া, উঠে পড়া, আর ভালোবাসার নাম।"}
+  ]
+};/* ================================ */
+
+document.documentElement.classList.add('js');
+const bn=n=>String(n).replace(/\d/g,d=>'০১২৩৪৫৬৭৮৯'[d]);
+const bg=document.getElementById('bg');
+for(let i=1;i<=SCENE_COUNT;i++){
+  const el=document.createElement('div');
+  el.className='layer';
+  el.style.backgroundImage=`url(${IMG}scene${i}.webp)`;
+  bg.appendChild(el);
+}
+const veil=document.createElement('div');veil.className='veil';bg.appendChild(veil);
+const tint=document.createElement('div');tint.className='tint';bg.appendChild(tint);
+
+const main=document.getElementById('story');
+const words=STORY.sections.map(s=>s.text).join(" ").split(/\s+/).length;
+const mins=Math.max(1,Math.round(words/140));
+const hero=document.createElement('section');hero.className='hero';
+hero.dataset.scene=1;
+hero.innerHTML=`<div class="kicker">জীবনগাথা · পর্ব ২</div><h1>${STORY.title}</h1><p class="sub">${STORY.subtitle} · পড়তে প্রায় ${bn(mins)} মিনিট</p>`;
+main.appendChild(hero);
+STORY.sections.forEach((s,i)=>{
+  const sec=document.createElement('section');
+  if(i%2===1)sec.className='r';
+  sec.dataset.scene=s.scene;
+  sec.innerHTML=`<div class="card"><div class="num">দৃশ্য ${bn(String(s.scene).padStart(2,'0'))}</div><p>${s.text}</p></div>`;
+  main.appendChild(sec);
+});
+const end=document.createElement('section');end.className='end';end.dataset.scene=SCENE_COUNT;
+end.innerHTML=`<div class="big">${STORY.endTitle}</div><div class="small">${STORY.endNote}</div><p class="morewrap"><a class="more" href="01.html">আগের পর্ব: প্রথম কান্না</a>
+  <a class="more" href="../index.html">সিরিজের সব পর্ব দেখো</a></p>`;
+main.appendChild(end);
+
+const dots=document.getElementById('dots');
+STORY.sections.forEach((s,i)=>{
+  const a=document.createElement('a');a.href='#';a.dataset.i=i;dots.appendChild(a);
+});
+dots.addEventListener('click',e=>{
+  e.preventDefault();
+  const i=+e.target.dataset.i;
+  main.querySelectorAll('section')[i+1].scrollIntoView({behavior:'smooth'});
+});
+
+const secs=[...document.querySelectorAll('section')];
+function reveal(){
+  document.querySelectorAll('.card').forEach(c=>{
+    if(c.getBoundingClientRect().top<innerHeight*.85)c.classList.add('on');
+  });
+}
+addEventListener('scroll',reveal,{passive:true});
+addEventListener('resize',reveal,{passive:true});
+reveal();
+
+const layers=[...document.querySelectorAll('.layer')];
+const bar=document.getElementById('bar');
+const hint=document.getElementById('hint');
+const sceneOf=secs.map(s=>+s.dataset.scene);
+function onScroll(){
+  const max=document.documentElement.scrollHeight-innerHeight;
+  const p=max>0?Math.min(1,Math.max(0,scrollY/max)):0;
+  bar.style.width=(p*100)+'%';
+  hint.classList.toggle('gone',scrollY>innerHeight*.25);
+  const nb=secs.length;
+  const f=p*(nb-1);
+  const k=Math.min(nb-2,Math.floor(f));
+  const frac=f-k;
+  const t=sceneOf[k]-1+(sceneOf[k+1]-sceneOf[k])*frac;
+  layers.forEach((ly,i)=>{
+    const o=Math.max(0,Math.min(1,1-Math.abs(t-i)));
+    ly.style.opacity=o;
+    ly.style.transform=`scale(${1.06+Math.abs(t-i)*.05}) translateY(${(t-i)*14}px)`;
+  });
+  const cur=Math.round(t);
+  [...dots.children].forEach((a,i)=>a.classList.toggle('act',i===cur-1));
+}
+addEventListener('scroll',onScroll,{passive:true});
+onScroll();
+</script>
+</body>
+</html>

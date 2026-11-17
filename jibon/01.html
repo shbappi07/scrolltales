@@ -59,7 +59,7 @@ const STORY = {
   title: "প্রথম কান্না",
   subtitle: "জীবনগাথা · পর্ব ১ — সাগরের গল্পের শুরু, জন্মের সেই রাত।",
   endTitle: "সমাপ্ত",
-  endNote: "পরের পর্ব: উঠানের হামাগুড়ি — আসছে",
+  endNote: "পরের পর্ব: উঠানের হামাগুড়ি",
   sections: [
     {scene:1, text:"সেই রাতে গ্রামটা ঘুমিয়ে ছিল। শুধু একটা জানালায় আলো জ্বলছিল, কুপি লম্বা লম্বা ছুড়ে যাচ্ছিল উঠানে। ভেতরে মা ব্যথায় কাতরাচ্ছেন, আর বাইরে বর্ষার আগের সেই শান্ত আকাশ জুড়ে তারা। পৃথিবীতে আসার প্রস্তুতি চলছে, নিজের না বুঝেই।"},
     {scene:2, text:"ঘরের ভেতর ধাত্রী মা, পিসিমা, খালা — সবাই মায়ের দুই হাত দুই দিকে ধরে আছে। লণ্ঠনের আলোয় সবার মুখে ভয় আর আশা একসঙ্গে। বাইরের রাতটা শান্ত, কিন্তু ভেতরের রাতটায় সবকিছু ঝুলে আছে একটা মুহূর্তের ওপর।"},
@@ -103,7 +103,7 @@ STORY.sections.forEach((s,i)=>{
   main.appendChild(sec);
 });
 const end=document.createElement('section');end.className='end';end.dataset.scene=SCENE_COUNT;
-end.innerHTML=`<div class="big">${STORY.endTitle}</div><div class="small">${STORY.endNote}</div><p class="morewrap"><a class="more" href="../index.html">সিরিজের সব পর্ব দেখো</a></p>`;
+end.innerHTML=`<div class="big">${STORY.endTitle}</div><div class="small">${STORY.endNote}</div><p class="morewrap"><a class="more" href="02.html">পরের পর্ব পড়ো</a> <a class="more" href="../index.html">সিরিজের সব পর্ব দেখো</a></p>`;
 main.appendChild(end);
 
 const dots=document.getElementById('dots');
