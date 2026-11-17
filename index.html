@@ -17,7 +17,7 @@ body{font-family:Inter,"Noto Serif Bengali",sans-serif;background:#0b0e14;color:
 #bg .veil{position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 52%,rgba(4,6,11,.62) 100%)}
 #bg .tint{position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,10,18,.35),rgba(8,10,18,.15) 40%,rgba(8,10,18,.5))}
 #bar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,#e8a75c,#f6d08a);z-index:60;box-shadow:0 0 12px rgba(232,167,92,.7)}
-#dots{position:fixed;right:18px;top:50%;transform:translateY(-50%);z-index:60;display:flex;flex-direction:column;gap:12px}
+#dots{position:fixed;right:18px;top:50%;transform:translateY(-50%);z-index:60;display:flex;flex-direction:column;gap:10px}
 #dots a{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.25);display:block;transition:all .3s}
 #dots a.act{background:#f6d08a;transform:scale(1.5);box-shadow:0 0 10px rgba(246,208,138,.8)}
 main{position:relative;z-index:2}
@@ -39,7 +39,7 @@ h1{font-family:"Cormorant Garamond","Noto Serif Bengali",serif;font-size:clamp(2
 #hint{position:fixed;bottom:26px;left:50%;transform:translateX(-50%);z-index:55;font-size:.72rem;letter-spacing:.35em;text-transform:uppercase;opacity:.75;animation:bob 2.2s ease-in-out infinite;transition:opacity .5s}
 #hint.gone{opacity:0}
 @keyframes bob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,8px)}}
-@media (max-width:640px){section{min-height:115vh;padding:8vh 6vw}.card{padding:1.7rem 1.5rem}}
+@media (max-width:640px){section{min-height:115vh;padding:8vh 6vw}.card{padding:1.7rem 1.5rem}#dots{right:10px}}
 </style>
 </head>
 <body>
@@ -50,40 +50,50 @@ h1{font-family:"Cormorant Garamond","Noto Serif Bengali",serif;font-size:clamp(2
 <main id="story"></main>
 <script>
 /* ===== EDIT YOUR STORY HERE =====
-   scene = which background image (scene1.webp ... scene6.webp)
+   scene = which background image (scene1.webp ... sceneN.webp)
    Bangla text works out of the box (Noto Serif Bengali is loaded).
-   To make a new story: change title/subtitle/sections and swap the scene images. */
+   To make a new story: change title/subtitle/sections, swap the scene
+   images, and set SCENE_COUNT to the number of images. */
+const SCENE_COUNT = 12;
 const STORY = {
   title: "The Lighthouse Keeper's Letter",
-  subtitle: "A story in six scenes. Scroll slowly \u2014 the sea will follow you.",
+  subtitle: "A story in twelve scenes. Scroll slowly \u2014 the sea will follow you.",
   endTitle: "The End",
   endNote: "Scroll up to read it again",
   sections: [
-    {scene:1, text:"The letter had waited forty years in the drawer of a brass desk. Every evening, before he lit the lamp, Elias read it again \u2014 though he knew every word by heart."},
-    {scene:2, text:"\u201cWhen the lamp fails, keep it burning anyway. Someone is always coming home.\u201d His wife's handwriting had faded over the years. The promise never did."},
-    {scene:3, text:"That November the sea turned vicious. Rain fell sideways, lightning walked the horizon, and the rocks below the cliff vanished under walls of black water."},
-    {scene:4, text:"Then, through the chaos \u2014 a lantern. A tiny fishing boat, one man against the storm, crawling toward the cliff with his heart in his mouth."},
-    {scene:5, text:"Elias took the spiral stairs two at a time and threw himself against the crank. The great lens roared to life, and its beam tore a hole in the night."},
-    {scene:6, text:"By dawn the sea lay down like a sleeping child. The boat touched the pier, and two men stood a long while in the gold light, saying nothing at all. Some letters are answered not in words \u2014 but in light."}
+    {scene:1, text:"Elias had kept the Gray Cliff light for forty years. Through the great gale of '61 and a dozen quieter storms, the lamp had never once gone dark \u2014 not even the night the oil ran low and he fed the wick with broken chair legs. Tonight, with autumn rattling the windows like a beggar at the door, it burned as steady as ever."},
+    {scene:2, text:"But before the lamp, there was the letter. He unlocked the brass drawer the way a priest opens a reliquary. The paper had gone soft as cloth at its folds, the ink faded to the color of weak tea. He did not need to read it. He read it anyway."},
+    {scene:3, text:"\u201cWhen the lamp fails, keep it burning anyway. Someone is always coming home.\u201d Mara had written it in the winter she got sick, her letters slanting where her hand had begun to shake. The doctor gave her until spring. She gave the letter to Elias instead."},
+    {scene:4, text:"They had met on this very pier, in the summer of 1919. She stepped off the mail boat with one trunk and no hat, laughed at the gulls, and asked whether the light ever got lonely. Forty years, he told the empty room. Forty years, and it never once did while she was here."},
+    {scene:5, text:"That November the sea turned vicious. Rain fell sideways for three days, lightning walked the horizon, and the rocks below the cliff vanished under walls of black water."},
+    {scene:6, text:"In the village below, every window went dark \u2014 every window but one, where the harbor master's wife sat up with the wireless. At a quarter past nine it crackled: the Petrel was overdue. Six men. Out in that."},
+    {scene:7, text:"Elias was already at the window. Far out through the chaos, a lantern \u2014 a tiny fishing boat, one flickering star against the storm, crawling toward the cliff with its heart in its mouth."},
+    {scene:8, text:"He took the spiral stairs two at a time, the way he hadn't in twenty years, and threw himself against the crank. The gears shrieked. His shoulders burned. The machine was forty years old, and so was he \u2014 and neither of them, he decided, was finished yet."},
+    {scene:9, text:"The great lens roared to life. Its beam tore a hole in the night, swept the boiling sea, and held: a road of gold light laid across the black water, steady as a promise. He kept it turning \u2014 when the wind tried to tear the roof off, he turned it; when spray froze on the glass, he turned it. Somewhere down that road of light, he knew, a man was steering by nothing else in the world."},
+    {scene:10, text:"Near one in the morning the Petrel slid into the lee of the pier, more driftwood than boat. One by one the six came up the cliff path, salt-crusted and shaking and alive. The last of them was the harbor master's own son."},
+    {scene:11, text:"By dawn the sea lay down like a sleeping child. Elias stood with the young man in the gold light, and neither of them said anything at all. Some letters, it turns out, are answered not in words."},
+    {scene:12, text:"That morning Elias went back to the brass drawer, dipped his pen, and added one line beneath his wife's words, in a hand almost as steady as hers: \u201cKept it burning. They came home.\u201d Then he slept until noon, and the light over Gray Cliff waited for him like a good dog."}
   ]
 };
 /* ================================ */
 
 document.documentElement.classList.add('js');
 const bg=document.getElementById('bg');
-for(let i=1;i<=6;i++){
-  const d=document.createElement('div');
-  d.className='layer';d.id='ly'+i;
-  d.style.backgroundImage=`url(scene${i}.webp)`;
-  bg.appendChild(d);
+for(let i=1;i<=SCENE_COUNT;i++){
+  const el=document.createElement('div');
+  el.className='layer';
+  el.style.backgroundImage=`url(scene${i}.webp)`;
+  bg.appendChild(el);
 }
 const veil=document.createElement('div');veil.className='veil';bg.appendChild(veil);
 const tint=document.createElement('div');tint.className='tint';bg.appendChild(tint);
 
 const main=document.getElementById('story');
+const words=STORY.sections.map(s=>s.text).join(' ').split(/\s+/).length;
+const mins=Math.max(1,Math.round(words/200));
 const hero=document.createElement('section');hero.className='hero';
 hero.dataset.scene=1;
-hero.innerHTML=`<div class="kicker">ScrollTales</div><h1>${STORY.title}</h1><p class="sub">${STORY.subtitle}</p>`;
+hero.innerHTML=`<div class="kicker">ScrollTales</div><h1>${STORY.title}</h1><p class="sub">${STORY.subtitle} \u00b7 about ${mins} min read</p>`;
 main.appendChild(hero);
 STORY.sections.forEach((s,i)=>{
   const sec=document.createElement('section');
@@ -93,7 +103,7 @@ STORY.sections.forEach((s,i)=>{
   sec.innerHTML=`<div class="card"><div class="num">Scene ${n}</div><p>${s.text}</p></div>`;
   main.appendChild(sec);
 });
-const end=document.createElement('section');end.className='end';end.dataset.scene=6;
+const end=document.createElement('section');end.className='end';end.dataset.scene=SCENE_COUNT;
 end.innerHTML=`<div class="big">${STORY.endTitle}</div><div class="small">${STORY.endNote}</div>`;
 main.appendChild(end);
 
