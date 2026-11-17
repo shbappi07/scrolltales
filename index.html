@@ -22,8 +22,10 @@ body{font-family:Inter,"Noto Serif Bengali",sans-serif;background:#0b0e14;color:
 #dots a.act{background:#f6d08a;transform:scale(1.5);box-shadow:0 0 10px rgba(246,208,138,.8)}
 main{position:relative;z-index:2}
 section{min-height:135vh;display:flex;align-items:center;padding:10vh 7vw}
-section .card{max-width:620px;background:rgba(9,12,20,.58);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.09);border-radius:22px;padding:2.4rem 2.6rem;box-shadow:0 24px 60px rgba(0,0,0,.45);opacity:0;transform:translateY(34px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
-section .card.on{opacity:1;transform:none}
+section .card{max-width:620px;background:rgba(9,12,20,.58);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.09);border-radius:22px;padding:2.4rem 2.6rem;box-shadow:0 24px 60px rgba(0,0,0,.45)}
+@supports not (backdrop-filter:blur(1px)){section .card{background:rgba(9,12,20,.88)}}
+.js .card{opacity:0;transform:translateY(34px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+.js .card.on{opacity:1;transform:none}
 section.r{justify-content:flex-end}
 .num{font-size:.72rem;letter-spacing:.4em;color:#e8a75c;text-transform:uppercase;margin-bottom:1.1rem;font-weight:600}
 .card p{font-family:"Cormorant Garamond","Noto Serif Bengali",serif;font-size:clamp(1.15rem,2.3vw,1.5rem);line-height:1.8}
@@ -37,7 +39,7 @@ h1{font-family:"Cormorant Garamond","Noto Serif Bengali",serif;font-size:clamp(2
 #hint{position:fixed;bottom:26px;left:50%;transform:translateX(-50%);z-index:55;font-size:.72rem;letter-spacing:.35em;text-transform:uppercase;opacity:.75;animation:bob 2.2s ease-in-out infinite;transition:opacity .5s}
 #hint.gone{opacity:0}
 @keyframes bob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,8px)}}
-@media (max-width:640px){section{padding:8vh 6vw}.card{padding:1.7rem 1.5rem}}
+@media (max-width:640px){section{min-height:115vh;padding:8vh 6vw}.card{padding:1.7rem 1.5rem}}
 </style>
 </head>
 <body>
@@ -67,6 +69,7 @@ const STORY = {
 };
 /* ================================ */
 
+document.documentElement.classList.add('js');
 const bg=document.getElementById('bg');
 for(let i=1;i<=6;i++){
   const d=document.createElement('div');
@@ -105,10 +108,14 @@ dots.addEventListener('click',e=>{
 });
 
 const secs=[...document.querySelectorAll('section')];
-const io=new IntersectionObserver(es=>{
-  es.forEach(en=>{if(en.isIntersecting)en.target.querySelector('.card')?.classList.add('on')});
-},{threshold:.35});
-secs.forEach(s=>{const c=s.querySelector('.card');if(c)io.observe(c)});
+function reveal(){
+  document.querySelectorAll('.card').forEach(c=>{
+    if(c.getBoundingClientRect().top<innerHeight*.85)c.classList.add('on');
+  });
+}
+addEventListener('scroll',reveal,{passive:true});
+addEventListener('resize',reveal,{passive:true});
+reveal();
 
 const layers=[...document.querySelectorAll('.layer')];
 const bar=document.getElementById('bar');
