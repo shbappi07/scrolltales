@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ScrollTales — stories you scroll through</title>
+<meta name="description" content="A scroll-driven reading experience: the story text moves beside you while the scene changes with every step.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&family=Noto+Serif+Bengali:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:Inter,"Noto Serif Bengali",sans-serif;background:#0b0e14;color:#f2ede2;overflow-x:hidden}
+#bg{position:fixed;inset:0;z-index:0}
+#bg .layer{position:absolute;inset:-5%;background-size:cover;background-position:center;opacity:0;will-change:opacity,transform}
+#bg .veil{position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 52%,rgba(4,6,11,.62) 100%)}
+#bg .tint{position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,10,18,.35),rgba(8,10,18,.15) 40%,rgba(8,10,18,.5))}
+#bar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,#e8a75c,#f6d08a);z-index:60;box-shadow:0 0 12px rgba(232,167,92,.7)}
+#dots{position:fixed;right:18px;top:50%;transform:translateY(-50%);z-index:60;display:flex;flex-direction:column;gap:12px}
+#dots a{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.25);display:block;transition:all .3s}
+#dots a.act{background:#f6d08a;transform:scale(1.5);box-shadow:0 0 10px rgba(246,208,138,.8)}
+main{position:relative;z-index:2}
+section{min-height:135vh;display:flex;align-items:center;padding:10vh 7vw}
+section .card{max-width:620px;background:rgba(9,12,20,.58);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.09);border-radius:22px;padding:2.4rem 2.6rem;box-shadow:0 24px 60px rgba(0,0,0,.45);opacity:0;transform:translateY(34px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+section .card.on{opacity:1;transform:none}
+section.r{justify-content:flex-end}
+.num{font-size:.72rem;letter-spacing:.4em;color:#e8a75c;text-transform:uppercase;margin-bottom:1.1rem;font-weight:600}
+.card p{font-family:"Cormorant Garamond","Noto Serif Bengali",serif;font-size:clamp(1.15rem,2.3vw,1.5rem);line-height:1.8}
+.hero{min-height:100vh;flex-direction:column;justify-content:center;text-align:center;gap:1.4rem}
+.hero .kicker{font-size:.8rem;letter-spacing:.5em;text-transform:uppercase;color:#e8a75c;font-weight:600}
+h1{font-family:"Cormorant Garamond","Noto Serif Bengali",serif;font-size:clamp(2.6rem,7.5vw,5rem);font-weight:600;line-height:1.08;text-shadow:0 4px 40px rgba(0,0,0,.6)}
+.hero .sub{opacity:.85;font-size:clamp(.95rem,1.6vw,1.1rem);max-width:34ch;margin:0 auto}
+.end{min-height:80vh;justify-content:center;text-align:center;flex-direction:column;gap:1rem}
+.end .big{font-family:"Cormorant Garamond","Noto Serif Bengali",serif;font-size:clamp(1.8rem,4vw,2.6rem)}
+.end .small{opacity:.7;letter-spacing:.2em;font-size:.85rem;text-transform:uppercase}
+#hint{position:fixed;bottom:26px;left:50%;transform:translateX(-50%);z-index:55;font-size:.72rem;letter-spacing:.35em;text-transform:uppercase;opacity:.75;animation:bob 2.2s ease-in-out infinite;transition:opacity .5s}
+#hint.gone{opacity:0}
+@keyframes bob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,8px)}}
+@media (max-width:640px){section{padding:8vh 6vw}.card{padding:1.7rem 1.5rem}}
+</style>
+</head>
+<body>
+<div id="bg"></div>
+<div id="bar"></div>
+<nav id="dots"></nav>
+<div id="hint">Scroll</div>
+<main id="story"></main>
+<script>
+/* ===== EDIT YOUR STORY HERE =====
+   scene = which background image (scene1.webp ... scene6.webp)
+   Bangla text works out of the box (Noto Serif Bengali is loaded).
+   To make a new story: change title/subtitle/sections and swap the scene images. */
+const STORY = {
+  title: "The Lighthouse Keeper's Letter",
+  subtitle: "A story in six scenes. Scroll slowly \u2014 the sea will follow you.",
+  endTitle: "The End",
+  endNote: "Scroll up to read it again",
+  sections: [
+    {scene:1, text:"The letter had waited forty years in the drawer of a brass desk. Every evening, before he lit the lamp, Elias read it again \u2014 though he knew every word by heart."},
+    {scene:2, text:"\u201cWhen the lamp fails, keep it burning anyway. Someone is always coming home.\u201d His wife's handwriting had faded over the years. The promise never did."},
+    {scene:3, text:"That November the sea turned vicious. Rain fell sideways, lightning walked the horizon, and the rocks below the cliff vanished under walls of black water."},
+    {scene:4, text:"Then, through the chaos \u2014 a lantern. A tiny fishing boat, one man against the storm, crawling toward the cliff with his heart in his mouth."},
+    {scene:5, text:"Elias took the spiral stairs two at a time and threw himself against the crank. The great lens roared to life, and its beam tore a hole in the night."},
+    {scene:6, text:"By dawn the sea lay down like a sleeping child. The boat touched the pier, and two men stood a long while in the gold light, saying nothing at all. Some letters are answered not in words \u2014 but in light."}
+  ]
+};
+/* ================================ */
+
+const bg=document.getElementById('bg');
+for(let i=1;i<=6;i++){
+  const d=document.createElement('div');
+  d.className='layer';d.id='ly'+i;
+  d.style.backgroundImage=`url(scene${i}.webp)`;
+  bg.appendChild(d);
+}
+const veil=document.createElement('div');veil.className='veil';bg.appendChild(veil);
+const tint=document.createElement('div');tint.className='tint';bg.appendChild(tint);
+
+const main=document.getElementById('story');
+const hero=document.createElement('section');hero.className='hero';
+hero.dataset.scene=1;
+hero.innerHTML=`<div class="kicker">ScrollTales</div><h1>${STORY.title}</h1><p class="sub">${STORY.subtitle}</p>`;
+main.appendChild(hero);
+STORY.sections.forEach((s,i)=>{
+  const sec=document.createElement('section');
+  if(i%2===1)sec.className='r';
+  sec.dataset.scene=s.scene;
+  const n=String(s.scene).padStart(2,'0');
+  sec.innerHTML=`<div class="card"><div class="num">Scene ${n}</div><p>${s.text}</p></div>`;
+  main.appendChild(sec);
+});
+const end=document.createElement('section');end.className='end';end.dataset.scene=6;
+end.innerHTML=`<div class="big">${STORY.endTitle}</div><div class="small">${STORY.endNote}</div>`;
+main.appendChild(end);
+
+const dots=document.getElementById('dots');
+STORY.sections.forEach((s,i)=>{
+  const a=document.createElement('a');a.href='#';a.dataset.i=i;dots.appendChild(a);
+});
+dots.addEventListener('click',e=>{
+  e.preventDefault();
+  const i=+e.target.dataset.i;
+  main.querySelectorAll('section')[i+1].scrollIntoView({behavior:'smooth'});
+});
+
+const secs=[...document.querySelectorAll('section')];
+const io=new IntersectionObserver(es=>{
+  es.forEach(en=>{if(en.isIntersecting)en.target.querySelector('.card')?.classList.add('on')});
+},{threshold:.35});
+secs.forEach(s=>{const c=s.querySelector('.card');if(c)io.observe(c)});
+
+const layers=[...document.querySelectorAll('.layer')];
+const bar=document.getElementById('bar');
+const hint=document.getElementById('hint');
+const sceneOf=secs.map(s=>+s.dataset.scene);
+function onScroll(){
+  const max=document.documentElement.scrollHeight-innerHeight;
+  const p=max>0?Math.min(1,Math.max(0,scrollY/max)):0;
+  bar.style.width=(p*100)+'%';
+  hint.classList.toggle('gone',scrollY>innerHeight*.25);
+  const nb=secs.length;
+  const f=p*(nb-1);
+  const k=Math.min(nb-2,Math.floor(f));
+  const frac=f-k;
+  const t=sceneOf[k]-1+(sceneOf[k+1]-sceneOf[k])*frac;
+  layers.forEach((ly,i)=>{
+    const o=Math.max(0,Math.min(1,1-Math.abs(t-i)));
+    ly.style.opacity=o;
+    ly.style.transform=`scale(${1.06+Math.abs(t-i)*.05}) translateY(${(t-i)*14}px)`;
+  });
+  const cur=Math.round(t);
+  [...dots.children].forEach((a,i)=>a.classList.toggle('act',i===cur-1));
+}
+addEventListener('scroll',onScroll,{passive:true});
+onScroll();
+</script>
+</body>
+</html>
