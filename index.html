@@ -3,55 +3,31 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>জীবনগাথা — একটা মানুষের পুরো জীবন</title>
-<meta name="description" content="একটা মানুষের জন্ম থেকে শেষ পর্যন্ত ৬৬ পর্বের গল্পসিরিজ — প্রতিটা পর্ব স্ক্রল-কাহিনি, ছবি আর লেখা একসঙ্গে।">
+<title>ScrollTales — গল্প যেখানে স্ক্রল হয়</title>
+<meta name="description" content="স্ক্রল করলে সিন বদলায়, পাশে লেখা ওঠে — এমন স্ক্রল-গল্পের সংকলন।">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Serif+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{font-family:Inter,"Noto Serif Bengali",serif;background:#0b0e14;color:#f2ede2;overflow-x:hidden}
-.hero{min-height:88vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:1.2rem;padding:8vh 7vw;position:relative;
-background:linear-gradient(180deg,rgba(8,10,18,.35),rgba(11,14,20,.92) 88%),url('jibon/img/scene1.webp') center/cover}
-.hero .kicker{font-size:.8rem;letter-spacing:.5em;color:#e8a75c;font-weight:600}
-h1{font-family:"Noto Serif Bengali",serif;font-size:clamp(2.4rem,7vw,4.6rem);font-weight:700;line-height:1.25;text-shadow:0 4px 40px rgba(0,0,0,.6)}
-.hero .sub{opacity:.85;font-size:clamp(1rem,1.9vw,1.2rem);max-width:52ch}
-.hero .go{margin-top:.6rem;display:inline-block;background:#e8a75c;color:#171208;font-weight:600;padding:.9rem 2rem;border-radius:999px;text-decoration:none;font-size:1rem;box-shadow:0 10px 30px rgba(232,167,92,.35)}
-.wrap{max-width:860px;margin:0 auto;padding:0 6vw 12vh}
-.intro{opacity:.75;margin:2rem 0 3rem;line-height:1.9;font-size:1rem}
-.stage{margin-bottom:2.4rem}
-.stage h3{font-size:1.05rem;font-weight:600;color:#f6d08a;margin-bottom:.7rem;letter-spacing:.02em}
-.stage h3 .sn{display:inline-block;min-width:2rem;color:#e8a75c;font-weight:700}
-.row{display:flex;align-items:center;gap:1rem;padding:.85rem 1.1rem;border:1px solid rgba(255,255,255,.08);border-radius:14px;margin-bottom:.55rem;background:rgba(255,255,255,.03);text-decoration:none;color:inherit}
-.row .cn{font-size:.85rem;color:#e8a75c;min-width:2.2rem;font-weight:600}
-.row .ct{flex:1;font-family:"Noto Serif Bengali",serif;font-size:1.05rem}
-.row .st{font-size:.8rem;opacity:.5}
-.row.live{border-color:rgba(232,167,92,.5);background:rgba(232,167,92,.08)}
-.row.live .st{color:#f6d08a;opacity:1;font-weight:600}
-.row.live:hover{background:rgba(232,167,92,.16)}
-.side{border-top:1px solid rgba(255,255,255,.1);margin-top:3rem;padding-top:2rem}
-.side h3{font-size:1rem;color:#f6d08a;margin-bottom:.7rem}
-.side a.row{color:inherit}
-.side .st{opacity:.6}
-@media (max-width:640px){.row{padding:.75rem .9rem}.row .ct{font-size:.98rem}}
+body{font-family:Inter,"Noto Serif Bengali",serif;background:#0b0e14;color:#f2ede2;min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:1rem;padding:10vh 7vw}
+.kicker{font-size:.8rem;letter-spacing:.5em;color:#e8a75c;font-weight:600}
+h1{font-family:"Noto Serif Bengali",serif;font-size:clamp(2.2rem,6vw,4rem);font-weight:700}
+.sub{opacity:.8;max-width:48ch}
+.grid{display:flex;flex-direction:column;gap:.8rem;margin-top:1.5rem;width:100%;max-width:560px}
+.card{display:flex;align-items:center;gap:1rem;text-decoration:none;color:inherit;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.04);border-radius:16px;padding:1.1rem 1.3rem;text-align:left}
+.card:hover{background:rgba(232,167,92,.12);border-color:rgba(232,167,92,.5)}
+.card .t{flex:1;font-family:"Noto Serif Bengali",serif;font-size:1.1rem}
+.card .m{font-size:.8rem;opacity:.55}
 </style>
 </head>
 <body>
-<div class="hero">
-  <div class="kicker">ScrollTales সিরিজ</div>
-  <h1>জীবনগাথা</h1>
-  <p class="sub">একটা মানুষের পুরো জীবন — জন্মের রাত থেকে শেষ বিদায় পর্যন্ত ৬৬টা পর্ব, দশটা দশায়। প্রতিটা পর্ব আলাদা গল্প, স্ক্রল করলে সিন বদলায়, পাশে লেখা ওঠে।</p>
-  <a class="go" href="jibon/01.html">পর্ব ১ থেকে শুরু করুন</a>
-</div>
-<div class="wrap">
-<p class="intro">এই সিরিজে থাকবে শিশুকালের কয়েকটা গল্প, স্কুলে ভর্তির দিনগুলো, পড়াশোনা, উচ্চ বিদ্যালয় আর কলেজের জীবন, প্রেম ও দুঃখ, বিশ্ববিদ্যালয়, চাকরি, পরিবার আর তার দায়িত্ব — শেষে বৃদ্ধ বয়স আর বিদায়। প্রতি সপ্তাহে নতুন পর্ব যুক্ত হবে।</p>
-<div class="stage"><h3><span class="sn">১</span> জন্ম ও শৈশব</h3><a class="row live" href="jibon/01.html"><span class="cn">0১</span><span class="ct">প্রথম কান্না</span><span class="st go">পড়ুন →</span></a><a class="row live" href="jibon/02.html"><span class="cn">0২</span><span class="ct">উঠানের হামাগুড়ি</span><span class="st go">পড়ুন →</span></a><div class="row soon"><span class="cn">0৩</span><span class="ct">প্রথম পা ও প্রথম শব্দ</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">0৪</span><span class="ct">দিদিমার রূপকথা</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">0৫</span><span class="ct">প্রথম বর্ষা</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">0৬</span><span class="ct">বোন পিয়ার জন্ম</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">0৭</span><span class="ct">হারানো পাখি</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">0৮</span><span class="ct">শৈশবের শেষ দিন</span><span class="st">আসছে</span></div></div><div class="stage"><h3><span class="sn">২</span> স্কুল জীবন</h3><div class="row soon"><span class="cn">0৯</span><span class="ct">স্কুলের প্রথম দিন</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">১০</span><span class="ct">প্রথম বন্ধু</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">১১</span><span class="ct">পড়ার ভয়</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">১২</span><span class="ct">শিক্ষকের ভালোবাসা</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">১৩</span><span class="ct">প্রথম পুরস্কার</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">১৪</span><span class="ct">খেলার মাঠ</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">১৫</span><span class="ct">প্রথম অসুখ</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">১৬</span><span class="ct">পঞ্চম শ্রেণির রেজাল্ট</span><span class="st">আসছে</span></div></div><div class="stage"><h3><span class="sn">৩</span> উচ্চ বিদ্যালয়</h3><div class="row soon"><span class="cn">১৭</span><span class="ct">নতুন শহরের স্কুল</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">১৮</span><span class="ct">বন্ধুদের দল</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">১৯</span><span class="ct">পরীক্ষার চাপ</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">২০</span><span class="ct">বাবার অসুখ</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">২১</span><span class="ct">প্রথম স্বপ্ন</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">২২</span><span class="ct">এসএসসির রাত</span><span class="st">আসছে</span></div></div><div class="stage"><h3><span class="sn">৪</span> কলেজ</h3><div class="row soon"><span class="cn">২৩</span><span class="ct">কলেজের প্রথম দিন</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">২৪</span><span class="ct">নতুন শহর</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">২৫</span><span class="ct">প্রথম ভালোবাসা</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">২৬</span><span class="ct">ভাঙন</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">২৭</span><span class="ct">চা দোকানের বন্ধুরা</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">২৮</span><span class="ct">এইচএসসির শেষ বেলা</span><span class="st">আসছে</span></div></div><div class="stage"><h3><span class="sn">৫</span> বিশ্ববিদ্যালয়</h3><div class="row soon"><span class="cn">২৯</span><span class="ct">ভার্সিটি লাইফ</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">৩০</span><span class="ct">রাত জাগা পড়া</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">৩১</span><span class="ct">বৃত্তি</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">৩২</span><span class="ct">প্রেম</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">৩৩</span><span class="ct">দূরত্ব</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">৩৪</span><span class="ct">গ্র্যাজুয়েশন</span><span class="st">আসছে</span></div></div><div class="stage"><h3><span class="sn">৬</span> চাকরির জীবন</h3><div class="row soon"><span class="cn">৩৫</span><span class="ct">প্রথম চাকরি</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">৩৬</span><span class="ct">শহরে মেস</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">৩৭</span><span class="ct">প্রথম বেতন</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">৩৮</span><span class="ct">বসের শাসন</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">৩৯</span><span class="ct">প্রমোশন</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">৪০</span><span class="ct">হারানো স্বপ্ন</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">৪১</span><span class="ct">গ্রামে ফেরা</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">৪২</span><span class="ct">মায়ের অসুখ</span><span class="st">আসছে</span></div></div><div class="stage"><h3><span class="sn">৭</span> ভালোবাসা ও পরিবার</h3><div class="row soon"><span class="cn">৪৩</span><span class="ct">বিয়ে</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">৪৪</span><span class="ct">নতুন সংসার</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">৪৫</span><span class="ct">প্রথম সন্তান</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">৪৬</span><span class="ct">রাত জাগা</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">৪৭</span><span class="ct">বাবা হওয়ার ভয়</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">৪৮</span><span class="ct">ছেলের স্কুলে ভর্তি</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">৪৯</span><span class="ct">আর্থিক চাপ</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">৫০</span><span class="ct">মা হারানো</span><span class="st">আসছে</span></div></div><div class="stage"><h3><span class="sn">৮</span> দায়িত্ব</h3><div class="row soon"><span class="cn">৫১</span><span class="ct">বাবার শেষ</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">৫২</span><span class="ct">সংসারের ভার</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">৫৩</span><span class="ct">ছেলেমেয়ে বড় হচ্ছে</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">৫৪</span><span class="ct">নিজের স্বপ্ন</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">৫৫</span><span class="ct">ছেলের বিয়ে</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">৫৬</span><span class="ct">নাতনির জন্ম</span><span class="st">আসছে</span></div></div><div class="stage"><h3><span class="sn">৯</span> বৃদ্ধাবস্থা</h3><div class="row soon"><span class="cn">৫৭</span><span class="ct">বাঁকা পিঠ</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">৫৮</span><span class="ct">গ্রামে প্রত্যাবর্তন</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">৫৯</span><span class="ct">পুরোনো চিঠি</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">৬০</span><span class="ct">বন্ধুদের বিদায়</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">৬১</span><span class="ct">নাতনির গল্প</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">৬২</span><span class="ct">শেষ নদী</span><span class="st">আসছে</span></div></div><div class="stage"><h3><span class="sn">১০</span> শেষ অধ্যায়</h3><div class="row soon"><span class="cn">৬৩</span><span class="ct">অসুখ</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">৬৪</span><span class="ct">হাসপাতালের রাত</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">৬৫</span><span class="ct">শেষ চিঠি</span><span class="st">আসছে</span></div><div class="row soon"><span class="cn">৬৬</span><span class="ct">উত্তরাধিকার</span><span class="st">আসছে</span></div></div>
-<div class="side">
-<h3>একক গল্প (সিরিজের বাইরে)</h3>
-<a class="row" href="story-nodi.html"><span class="ct">নদী থেমে থাকে না</span><span class="st">ভাঙা হৃদয় · লাইফ লেসন</span></a>
-<a class="row" href="story2.html"><span class="ct">আলো জ্বলে ধীরে</span><span class="st">ক্লাস ফাইভ · পড়া না পারা</span></a>
-</div>
+<div class="kicker">ScrollTales</div>
+<h1>গল্প যেখানে স্ক্রল হয়</h1>
+<p class="sub">স্ক্রল করলে সিনের ব্যাকগ্রাউন্ড ক্রসফেড হয়, পাশে পাশে গল্পের লেখা ওঠে।</p>
+<div class="grid">
+<a class="card" href="story-nodi.html"><span class="t">নদী থেমে থাকে না</span><span class="m">ভাঙা হৃদয় · লাইফ লেসন · ~৪ মিনিট</span></a>
+<a class="card" href="story2.html"><span class="t">আলো জ্বলে ধীরে</span><span class="m">ক্লাস ফাইভ · পড়া না পারা · ~৩ মিনিট</span></a>
 </div>
 </body>
 </html>
